@@ -1,39 +1,76 @@
 <style>
-    :root { --primary-red: #e52d27; }
+    :root { 
+        --primary-red: #e52d27; 
+        --footer-padding-base: 60px 8% 30px;
+    }
+
     .app-footer {
-        background: white; padding: 60px 8% 30px; border-top: 1px solid #eee; margin-top: auto;
+        background: white; 
+        padding: var(--footer-padding-base); 
+        border-top: 1px solid #eee; 
+        margin-top: auto;
         font-family: 'Inter', sans-serif;
     }
+
     .app-footer .footer-grid {
-        display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 50px; max-width: 1200px; margin: 0 auto 40px;
+        display: grid; 
+        /* Fluid grid to handle tablets gracefully */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+        gap: 40px; 
+        max-width: 1200px; 
+        margin: 0 auto 40px;
     }
+
+    @media (min-width: 1024px) {
+        .app-footer .footer-grid {
+            grid-template-columns: 1.5fr 1fr 1fr;
+        }
+    }
+
     .app-footer .footer-logo h3 { color: var(--primary-red); margin-bottom: 15px; font-size: 1.4rem; font-weight: bold; }
-    .app-footer .footer-logo p { color: #666; line-height: 1.6; font-size: 0.95rem; margin-bottom: 20px; }
+    .app-footer .footer-logo p { color: #666; line-height: 1.6; font-size: 0.95rem; margin-bottom: 20px; max-width: 400px; }
     .app-footer .footer-col h4 { margin-bottom: 20px; font-size: 1.1rem; color: #333; font-weight: bold; }
     .app-footer .footer-col ul { list-style: none; padding: 0; }
     .app-footer .footer-col ul li { margin-bottom: 12px; }
-    .app-footer .footer-col ul li a { text-decoration: none; color: #777; transition: 0.3s; }
-    .app-footer .footer-col ul li a:hover { color: var(--primary-red); }
+    .app-footer .footer-col ul li a { text-decoration: none; color: #777; transition: 0.3s; font-size: 0.95rem; }
+    .app-footer .footer-col ul li a:hover { color: var(--primary-red); padding-left: 5px; }
+
     .app-footer .social-links { display: flex; gap: 12px; }
     .app-footer .social-links a {
         width: 38px; height: 38px; background: #f4f4f4; color: #333;
         display: flex; align-items: center; justify-content: center;
         border-radius: 50%; text-decoration: none; transition: 0.3s; font-size: 1.1rem;
     }
-    .app-footer .social-links a:hover { background: #333; color: white; }
-    .app-footer .copyright { text-align: center; color: #aaa; font-size: 0.85rem; padding-top: 25px; border-top: 1px solid #f4f4f4; max-width: 1200px; margin: 0 auto; }
-    @media (max-width: 768px) { .app-footer .footer-grid { grid-template-columns: 1fr; text-align: center; } .app-footer .social-links { justify-content: center; } }
+    .app-footer .social-links a:hover { background: #333; color: white; transform: translateY(-3px); }
+    
+    .app-footer .copyright { 
+        text-align: center; color: #aaa; font-size: 0.85rem; 
+        padding-top: 25px; border-top: 1px solid #f4f4f4; 
+        max-width: 1200px; margin: 0 auto; 
+    }
+
+    /* Tablet and Mobile adjustments */
+    @media (max-width: 768px) { 
+        .app-footer { padding: 40px 5% 20px; }
+        .app-footer .footer-grid { 
+            grid-template-columns: 1fr; 
+            text-align: center; 
+            gap: 30px;
+        } 
+        .app-footer .footer-logo p { margin: 0 auto 20px; }
+        .app-footer .social-links { justify-content: center; } 
+    }
 </style>
 
 <footer class="app-footer">
     <div class="footer-grid">
         <div class="footer-logo">
             <h3>Task Management</h3>
-            <p>Simplifiez votre productivité quotidienne avec notre outil de gestion intuitive. Organisez, suivez et réussissez vos projets.</p>
+            <p>Optimisez votre flux de travail et collaborez avec votre équipe en temps réel. Gérez vos projets en toute simplicité.</p>
             <div class="social-links">
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" aria-label="X-Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
             </div>
         </div>
         <div class="footer-col">
