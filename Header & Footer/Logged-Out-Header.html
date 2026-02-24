@@ -1,36 +1,178 @@
 <style>
     :root { --primary-red: #e52d27; }
+    
     .public-header {
-        background: white; padding: 1rem 8%;
-        display: flex; align-items: center; justify-content: space-between;
+        background: white; 
+        padding: 1rem 8%;
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between;
         box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        position: sticky; top: 0; z-index: 1000;
+        position: sticky; 
+        top: 0; 
+        z-index: 1000;
         font-family: 'Inter', sans-serif;
     }
-    .public-header .logo { font-weight: 800; font-size: 1.3rem; color: #1a1a1a; text-decoration: none; }
-    .public-header nav a { margin: 0 15px; text-decoration: none; color: #555; font-weight: 500; transition: color 0.3s; }
+    
+    .public-header .logo { 
+        font-weight: 800; 
+        font-size: 1.3rem; 
+        color: #1a1a1a; 
+        text-decoration: none; 
+        z-index: 1001; /* Stay above mobile menu */
+    }
+
+    /* Desktop Navigation Container */
+    .public-nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-grow: 1;
+        margin-left: 40px;
+    }
+
+    .public-header nav a { 
+        margin: 0 15px; 
+        text-decoration: none; 
+        color: #555; 
+        font-weight: 500; 
+        transition: color 0.3s; 
+    }
+    
     .public-header nav a:hover { color: var(--primary-red); }
-    .public-header .user-zone { display: flex; gap: 10px; }
+    
+    .public-header .user-zone { display: flex; gap: 10px; align-items: center; }
+    
     .public-header .btn-signin { 
-        background: white; color: var(--primary-red); border: 1px solid var(--primary-red);
-        padding: 8px 15px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.2s; 
+        background: white; 
+        color: var(--primary-red); 
+        border: 1px solid var(--primary-red);
+        padding: 8px 15px; 
+        border-radius: 5px; 
+        font-weight: bold; 
+        cursor: pointer; 
+        transition: 0.2s; 
     }
     .public-header .btn-signin:hover { background: #fff5f5; }
+    
     .public-header .btn-signup { 
-        background: var(--primary-red); color: white; border: 1px solid var(--primary-red);
-        padding: 8px 15px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.2s; 
+        background: var(--primary-red); 
+        color: white; 
+        border: 1px solid var(--primary-red);
+        padding: 8px 15px; 
+        border-radius: 5px; 
+        font-weight: bold; 
+        cursor: pointer; 
+        transition: 0.2s; 
     }
     .public-header .btn-signup:hover { background: #c22626; border-color: #c22626; }
+
+    /* Mobile Menu Toggle Icon */
+    .menu-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #333;
+        z-index: 1001;
+    }
+
+    /* --- MOBILE RESPONSIVE STYLES --- */
+    @media (max-width: 768px) {
+        .menu-toggle {
+            display: block; /* Show hamburger icon */
+        }
+
+        .public-nav-container {
+            position: fixed;
+            top: 0;
+            right: -100%; /* Hidden off-screen */
+            height: 100vh;
+            width: 70%;
+            background: white;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 80px 20px;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: 0.4s ease-in-out;
+            margin-left: 0;
+        }
+
+        .public-nav-container.active {
+            right: 0; /* Slide menu in */
+        }
+
+        .public-header nav {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .public-header nav a {
+            margin: 15px 0;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .public-header .user-zone {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .public-header .btn-signin, 
+        .public-header .btn-signup {
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+        }
+    }
 </style>
 
 <header class="public-header">
     <a href="index.html" class="logo">Task Management</a>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="support.html">Support</a>
-    </nav>
-    <div class="user-zone">
-        <button class="btn-signin" onclick="window.location.href='sign_in.html'">Sign In</button>
-        <button class="btn-signup" onclick="window.location.href='sign_up.html'">Sign Up</button>
+
+    <div class="menu-toggle" id="mobile-menu">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <div class="public-nav-container" id="public-nav">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="support.html">Support</a>
+        </nav>
+        <div class="user-zone">
+            <button class="btn-signin" onclick="window.location.href='sign_in.html'">Sign In</button>
+            <button class="btn-signup" onclick="window.location.href='sign_up.html'">Sign Up</button>
+        </div>
     </div>
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('mobile-menu');
+        const navContainer = document.getElementById('public-nav');
+        const menuIcon = menuToggle.querySelector('i');
+
+        menuToggle.addEventListener('click', function() {
+            // Toggle sidebar visibility
+            navContainer.classList.toggle('active');
+            
+            // Toggle icon between Hamburger (Bars) and X (Close)
+            if (navContainer.classList.contains('active')) {
+                menuIcon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        });
+
+        // Close menu if user clicks outside of the sidebar
+        document.addEventListener('click', function(event) {
+            const isClickInside = navContainer.contains(event.target) || menuToggle.contains(event.target);
+            if (!isClickInside && navContainer.classList.contains('active')) {
+                navContainer.classList.remove('active');
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        });
+    });
+</script>
