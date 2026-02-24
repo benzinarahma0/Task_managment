@@ -1,34 +1,174 @@
 <style>
     :root { --primary-red: #e52d27; }
+    
     .app-header {
-        background: white; padding: 1rem 8%;
-        display: flex; align-items: center; justify-content: space-between;
+        background: white; 
+        padding: 1rem 8%;
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between;
         box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        position: sticky; top: 0; z-index: 1000;
+        position: sticky; 
+        top: 0; 
+        z-index: 1000;
         font-family: 'Inter', sans-serif;
     }
-    .app-header .logo { font-weight: 800; font-size: 1.3rem; color: #1a1a1a; text-decoration: none; }
-    .app-header nav a { margin: 0 15px; text-decoration: none; color: #555; font-weight: 500; transition: color 0.3s; }
-    .app-header nav a:hover { color: var(--primary-red); }
-    .app-header .user-zone { display: flex; align-items: center; }
-    .app-header .user-name { margin-right: 15px; font-weight: 500; color: #333; }
-    .app-header .btn-logout { 
-        background: var(--primary-red); color: white; border: none; 
-        padding: 8px 15px; border-radius: 5px; font-weight: bold; 
-        cursor: pointer; transition: background 0.2s; 
+    
+    .app-header .logo { 
+        font-weight: 800; 
+        font-size: 1.3rem; 
+        color: #1a1a1a; 
+        text-decoration: none; 
+        z-index: 1001;
     }
+
+    /* Desktop Navigation */
+    .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-grow: 1;
+        margin-left: 40px;
+    }
+
+    .app-header nav a { 
+        margin: 0 15px; 
+        text-decoration: none; 
+        color: #555; 
+        font-weight: 500; 
+        transition: color 0.3s; 
+    }
+    
+    .app-header nav a:hover { color: var(--primary-red); }
+    
+    .app-header .user-zone { display: flex; align-items: center; }
+    
+    .app-header .user-name { margin-right: 15px; font-weight: 500; color: #333; }
+    
+    .app-header .btn-logout { 
+        background: var(--primary-red); 
+        color: white; 
+        border: none; 
+        padding: 8px 15px; 
+        border-radius: 5px; 
+        font-weight: bold; 
+        cursor: pointer; 
+        transition: background 0.2s; 
+    }
+    
     .app-header .btn-logout:hover { background: #c22626; }
+
+    /* Mobile Menu Toggle (Hidden on Desktop) */
+    .menu-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #333;
+        z-index: 1001;
+    }
+
+    /* --- MOBILE RESPONSIVE STYLES --- */
+    @media (max-width: 768px) {
+        .menu-toggle {
+            display: block; /* Show hamburger on mobile */
+        }
+
+        .nav-container {
+            position: fixed;
+            top: 0;
+            right: -100%; /* Hide menu off-screen by default */
+            height: 100vh;
+            width: 70%;
+            background: white;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 80px 20px;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: 0.4s ease-in-out;
+            margin-left: 0;
+        }
+
+        .nav-container.active {
+            right: 0; /* Slide menu in */
+        }
+
+        .app-header nav {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .app-header nav a {
+            margin: 15px 0;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .app-header .user-zone {
+            flex-direction: column;
+            width: 100%;
+            align-items: flex-start;
+        }
+
+        .app-header .user-name {
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .app-header .btn-logout {
+            width: 100%;
+            padding: 12px;
+        }
+    }
 </style>
 
 <header class="app-header">
     <a href="dashboard.html" class="logo">Task Management</a>
-    <nav>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="task_list.html">Tasks</a>
-        <a href="support.html">Support</a>
-    </nav>
-    <div class="user-zone">
-        <span class="user-name">User Name</span>
-        <button class="btn-logout" onclick="window.location.href='index.html'">Log out</button>
+    
+    <div class="menu-toggle" id="mobile-menu">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <div class="nav-container" id="nav-container">
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="task_list.html">Tasks</a>
+            <a href="support.html">Support</a>
+        </nav>
+        <div class="user-zone">
+            <span class="user-name">User Name</span>
+            <button class="btn-logout" onclick="window.location.href='index.html'">Log out</button>
+        </div>
     </div>
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('mobile-menu');
+        const navContainer = document.getElementById('nav-container');
+        const menuIcon = menuToggle.querySelector('i');
+
+        menuToggle.addEventListener('click', function() {
+            // Toggle the 'active' class to show/hide menu
+            navContainer.classList.toggle('active');
+            
+            // Change icon between Bars and X (Close)
+            if (navContainer.classList.contains('active')) {
+                menuIcon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        });
+
+        // Close menu if user clicks outside of it
+        document.addEventListener('click', function(event) {
+            const isClickInside = navContainer.contains(event.target) || menuToggle.contains(event.target);
+            if (!isClickInside && navContainer.classList.contains('active')) {
+                navContainer.classList.remove('active');
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        });
+    });
+</script>
