@@ -38,7 +38,7 @@ Use the following credentials to test the internal features:
 | Email | `user@gmail.com` |
 | Password | `user` |
 
-<img src="./readme/Access%20guide.jpg" width="800"/>
+<img src="./readme/Access_guide.jpg" width="800"/>
 
 ---
 
