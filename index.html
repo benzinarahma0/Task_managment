@@ -32,7 +32,17 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         
-        body { background-color: #f3f0f1; display: flex; flex-direction: column; min-height: 100vh; }
+        :root {
+            --primary-red: #e52d27;
+            --footer-padding-base: 60px 8% 30px;
+        }
+
+        body { 
+            background-color: #f3f0f1; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+        }
 
         /* Scroll Animation Base Classes */
         .scroll-hidden {
@@ -52,99 +62,215 @@
             box-shadow: 0 0 60px -15px rgba(224, 36, 36, 0.4);
         }
 
-        /* --- TEMPLATE HEADER & FOOTER STYLES --- */
-        :root {
-            --primary-red: #e52d27;
-            --bg-light: #f8f9fa;
-        }
-
-        header {
-            background: white; padding: 1rem 8%;
-            display: flex; align-items: center; justify-content: space-between;
+        /* ==========================================
+           LOGGED-OUT HEADER STYLES
+        ========================================== */
+        .public-header {
+            background: white; 
+            padding: 1rem 8%;
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            position: fixed; width: 100%; top: 0; z-index: 1000;
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            font-family: 'Inter', sans-serif;
         }
-        .logo { font-weight: 800; font-size: 1.3rem; color: #1a1a1a; }
-        header nav a { margin: 0 15px; text-decoration: none; color: #555; font-weight: 500; transition: color 0.3s; }
-        header nav a:hover { color: var(--primary-red); }
-        .btn-logout { background: var(--primary-red); color: white; border: none; padding: 8px 15px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
-        .btn-logout:hover { background: #c1231f; }
-
-        footer {
-            background: white;
-            padding: 60px 8% 30px;
-            border-top: 1px solid #eee;
-            margin-top: auto;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 50px;
-            margin-bottom: 40px;
+        
+        .public-header .logo { 
+            font-weight: 800; 
+            font-size: 1.3rem; 
+            color: #1a1a1a; 
+            text-decoration: none; 
+            z-index: 1001; 
         }
 
-        .footer-logo h3 { color: var(--primary-red); margin-bottom: 15px; font-size: 1.4rem; font-weight: bold; }
-        .footer-logo p { color: #666; line-height: 1.6; font-size: 0.95rem; margin-bottom: 20px; }
+        .public-nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-grow: 1;
+            margin-left: 40px;
+        }
 
-        .footer-col h4 { margin-bottom: 20px; font-size: 1.1rem; color: #333; font-weight: bold; }
-        .footer-col ul { list-style: none; padding: 0; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { text-decoration: none; color: #777; transition: 0.3s; }
-        .footer-col ul li a:hover { color: var(--primary-red); }
+        .public-header nav a { 
+            margin: 0 15px; 
+            text-decoration: none; 
+            color: #555; 
+            font-weight: 500; 
+            transition: color 0.3s; 
+        }
+        
+        .public-header nav a:hover { color: var(--primary-red); }
+        
+        .public-header .user-zone { display: flex; gap: 10px; align-items: center; }
+        
+        .public-header .btn-signin { 
+            background: white; 
+            color: var(--primary-red); 
+            border: 1px solid var(--primary-red);
+            padding: 8px 15px; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: 0.2s; 
+        }
+        .public-header .btn-signin:hover { background: #fff5f5; }
+        
+        .public-header .btn-signup { 
+            background: var(--primary-red); 
+            color: white; 
+            border: 1px solid var(--primary-red);
+            padding: 8px 15px; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: 0.2s; 
+        }
+        .public-header .btn-signup:hover { background: #c22626; border-color: #c22626; }
 
-        .social-links { display: flex; gap: 12px; }
-        .social-links a {
-            width: 38px; height: 38px; 
-            background: #f4f4f4; 
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
             color: #333;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; text-decoration: none;
-            transition: 0.3s; font-size: 1.1rem;
+            z-index: 1001;
         }
-        .social-links a:hover { background: #333; color: white; }
 
-        .copyright {
-            text-align: center; color: #aaa; font-size: 0.85rem;
-            padding-top: 25px; border-top: 1px solid #f4f4f4;
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+
+            .public-nav-container {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: white;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 80px 20px;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                transition: 0.4s ease-in-out;
+                margin-left: 0;
+            }
+
+            .public-nav-container.active { right: 0; }
+
+            .public-header nav {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin-bottom: 30px;
+            }
+
+            .public-header nav a {
+                margin: 15px 0;
+                font-size: 1.1rem;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 10px;
+            }
+
+            .public-header .user-zone {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .public-header .btn-signin, 
+            .public-header .btn-signup {
+                width: 100%;
+                text-align: center;
+                padding: 12px;
+            }
         }
-            :root { --primary-red: #e52d27; }
-    .public-header {
-        background: white; padding: 1rem 8%;
-        display: flex; align-items: center; justify-content: space-between;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        position: sticky; top: 0; z-index: 1000;
-        font-family: 'Inter', sans-serif;
-    }
-    .public-header .logo { font-weight: 800; font-size: 1.3rem; color: #1a1a1a; text-decoration: none; }
-    .public-header nav a { margin: 0 15px; text-decoration: none; color: #555; font-weight: 500; transition: color 0.3s; }
-    .public-header nav a:hover { color: var(--primary-red); }
-    .public-header .user-zone { display: flex; gap: 10px; }
-    .public-header .btn-signin { 
-        background: white; color: var(--primary-red); border: 1px solid var(--primary-red);
-        padding: 8px 15px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.2s; 
-    }
-    .public-header .btn-signin:hover { background: #fff5f5; }
-    .public-header .btn-signup { 
-        background: var(--primary-red); color: white; border: 1px solid var(--primary-red);
-        padding: 8px 15px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.2s; 
-    }
-    .public-header .btn-signup:hover { background: #c22626; border-color: #c22626; }
+
+        /* ==========================================
+           LOGGED-OUT FOOTER STYLES
+        ========================================== */
+        .public-footer {
+            background: white; 
+            padding: var(--footer-padding-base); 
+            border-top: 1px solid #eee; 
+            margin-top: auto;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .public-footer .footer-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 40px; 
+            max-width: 1200px; 
+            margin: 0 auto 40px;
+        }
+
+        @media (min-width: 1024px) {
+            .public-footer .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+        }
+
+        .public-footer .footer-logo h3 { color: var(--primary-red); margin-bottom: 15px; font-size: 1.4rem; font-weight: bold; }
+        .public-footer .footer-logo p { color: #666; line-height: 1.6; font-size: 0.95rem; margin-bottom: 20px; max-width: 400px; }
+        .public-footer .footer-col h4 { margin-bottom: 20px; font-size: 1.1rem; color: #333; font-weight: bold; }
+        .public-footer .footer-col ul { list-style: none; padding: 0; }
+        .public-footer .footer-col ul li { margin-bottom: 12px; }
+        .public-footer .footer-col ul li a { text-decoration: none; color: #777; transition: 0.3s; font-size: 0.95rem; }
+        .public-footer .footer-col ul li a:hover { color: var(--primary-red); padding-left: 5px; }
+
+        .public-footer .social-links { display: flex; gap: 12px; }
+        .public-footer .social-links a {
+            width: 38px; height: 38px; background: #f4f4f4; color: #333;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; text-decoration: none; transition: 0.3s; font-size: 1.1rem;
+        }
+        .public-footer .social-links a:hover { background: #333; color: white; transform: translateY(-3px); }
+        
+        .public-footer .copyright { 
+            text-align: center; color: #aaa; font-size: 0.85rem; 
+            padding-top: 25px; border-top: 1px solid #f4f4f4; 
+            max-width: 1200px; margin: 0 auto; 
+        }
+
+        @media (max-width: 768px) { 
+            .public-footer { padding: 40px 5% 20px; }
+            .public-footer .footer-grid { 
+                grid-template-columns: 1fr; 
+                text-align: center; 
+                gap: 30px;
+            } 
+            .public-footer .footer-logo p { margin-left: auto; margin-right: auto; }
+            .public-footer .social-links { justify-content: center; } 
+        }
+
+        @media (max-width: 480px) {
+            .public-footer .footer-logo h3 { font-size: 1.2rem; }
+            .public-footer .footer-col h4 { font-size: 1rem; }
+            .public-footer .copyright { font-size: 0.75rem; }
+        }
     </style>
 </head>
-<body class="text-brand-dark font-sans antialiased overflow-x-hidden pt-20"> 
+<body class="text-brand-dark font-sans antialiased overflow-x-hidden"> 
+
+    <!-- LOGGED-OUT HEADER INJECTED -->
     <header class="public-header">
         <a href="index.html" class="logo">Task Management</a>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="support.html">Support</a>
-        </nav>
-        <div class="user-zone">
-            <button class="btn-signin" onclick="window.location.href='sign_in.html'">Sign In</button>
-            <button class="btn-signup" onclick="window.location.href='sign_up.html'">Sign Up</button>
+
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <div class="public-nav-container" id="public-nav">
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="support.html">Support</a>
+            </nav>
+            <div class="user-zone">
+                <button class="btn-signin" onclick="window.location.href='sign_in.html'">Sign In</button>
+                <button class="btn-signup" onclick="window.location.href='sign_up.html'">Sign Up</button>
+            </div>
         </div>
     </header>
 
+    <!-- CONTENT PRESERVED -->
     <main class="flex-grow">
         <section id="hero" class="relative pt-20 pb-20 lg:pt-32 lg:pb-32 min-h-[80vh] flex items-center">
             <div class="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-red-400 rounded-full blur-[120px] opacity-20 pointer-events-none -z-10"></div>
@@ -337,15 +463,16 @@
         </section>
     </main>
 
+    <!-- LOGGED-OUT FOOTER INJECTED -->
     <footer class="public-footer">
         <div class="footer-grid">
             <div class="footer-logo">
                 <h3>Task Management</h3>
                 <p>Simplifiez votre productivité quotidienne avec notre outil de gestion intuitive. Organisez, suivez et réussissez vos projets.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="X-Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="footer-col">
@@ -367,9 +494,32 @@
         <div class="copyright">&copy; 2026 Task Management. Tous droits réservés.</div>
     </footer>
 
+    <!-- MOBILE MENU SCRIPT INJECTED -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Scroll-triggered Reveal Animations (The "Scroll Story")
+            // MOBILE MENU TOGGLE
+            const menuToggle = document.getElementById('mobile-menu');
+            const navContainer = document.getElementById('public-nav');
+            const menuIcon = menuToggle.querySelector('i');
+
+            menuToggle.addEventListener('click', function() {
+                navContainer.classList.toggle('active');
+                if (navContainer.classList.contains('active')) {
+                    menuIcon.classList.replace('fa-bars', 'fa-xmark');
+                } else {
+                    menuIcon.classList.replace('fa-xmark', 'fa-bars');
+                }
+            });
+
+            document.addEventListener('click', function(event) {
+                const isClickInside = navContainer.contains(event.target) || menuToggle.contains(event.target);
+                if (!isClickInside && navContainer.classList.contains('active')) {
+                    navContainer.classList.remove('active');
+                    menuIcon.classList.replace('fa-xmark', 'fa-bars');
+                }
+            });
+
+            // SCROLL ANIMATIONS (Original File Logic)
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
