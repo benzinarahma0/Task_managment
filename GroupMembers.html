@@ -3,76 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google DeepMind - Team Page</title>
+    <title>Task Management - Group Members</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         :root {
+            --primary-red: #e52d27;
+            --bg-light: #f8f9fa;
             --blanc-casse: #FAF9F6;
             --beige-rose: #FFF5F2;
-            --rouge-deepmind: #E50914;
             --noir-texte: #1A1A1A;
             --gris-description: #555555;
             --blanc-pur: #FFFFFF;
         }
 
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background-color: var(--blanc-casse);
-            font-family: 'Inter', sans-serif;
-            margin: 0;
+            background-color: var(--bg-light);
             display: flex;
             flex-direction: column;
-            align-items: center;
             min-height: 100vh;
         }
 
-        /* --- STANDARD HEADER --- */
+        /* --- TEMPLATE HEADER --- */
         header {
-            background: white; 
-            padding: 1rem 8%;
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between;
+            background: white; padding: 1rem 8%;
+            display: flex; align-items: center; justify-content: space-between;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            width: 100%;
+            position: sticky; top: 0; z-index: 1000;
         }
-        .logo { font-weight: 800; font-size: 1.3rem; }
-        .logo a { text-decoration: none; color: inherit; }
-        header nav a { margin: 0 15px; text-decoration: none; color: #555; font-weight: 500; }
+        .logo { font-weight: 800; font-size: 1.3rem; color: #1a1a1a; }
+        header nav a { margin: 0 15px; text-decoration: none; color: #555; font-weight: 500; transition: color 0.3s; }
+        header nav a:hover { color: var(--primary-red); }
+        
         .user-zone { display: flex; align-items: center; }
         .btn-logout { 
-            background: var(--rouge-deepmind); 
-            color: white; 
-            border: none; 
-            padding: 8px 15px; 
-            border-radius: 5px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            transition: 0.3s;
+            background: var(--primary-red); color: white; border: none; 
+            padding: 8px 15px; border-radius: 5px; font-weight: bold; 
+            cursor: pointer; transition: background 0.2s; 
         }
-        .btn-logout:hover { opacity: 0.8; }
+        .btn-logout:hover { background: #c22626; }
 
-        /* --- PAGE CONTENT --- */
-        .header-logo {
-            margin: 60px 0;
-            font-size: 32px;
-            font-weight: 700;
-        }
-        .google { color: var(--noir-texte); }
-        .deepmind { color: var(--rouge-deepmind); margin-left: 5px; }
-
+        /* --- GRILLE DES CARTES --- */
         .container {
             flex: 1;
             display: flex;
             justify-content: center;
-            padding-bottom: 80px;
-            width: 100%;
+            padding: 60px 20px 80px;
         }
 
         .team-grid {
@@ -95,7 +80,7 @@
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
             border: 1px solid rgba(0, 0, 0, 0.02);
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
         }
         .profile-card:hover {
             transform: translateY(-5px);
@@ -105,60 +90,64 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            border: 3px solid var(--rouge-deepmind);
+            border: 3px solid var(--primary-red);
             padding: 4px;
             margin-bottom: 20px;
             background-color: var(--beige-rose);
         }
 
         .name { color: var(--noir-texte); font-size: 22px; margin: 0 0 10px 0; font-weight: 700; }
-        .job-title { color: var(--rouge-deepmind); font-size: 14px; font-weight: 600; margin-bottom: 20px; display: block; }
+        .job-title { color: var(--primary-red); font-size: 14px; font-weight: 600; margin-bottom: 20px; display: block; }
         .description { color: var(--gris-description); font-size: 14px; line-height: 1.6; margin: 0; }
 
-        /* --- STANDARD FOOTER --- */
+        /* --- TEMPLATE FOOTER --- */
         footer {
-            background: white; 
-            padding: 60px 8% 30px; 
-            border-top: 1px solid #eee; 
-            margin-top: auto;
-            width: 100%;
+            background: white;
+            padding: 60px 8% 30px;
+            border-top: 1px solid #eee;
+            margin-top: 50px;
         }
-        .footer-grid { 
-            display: grid; 
-            grid-template-columns: 1.5fr 1fr 1fr; 
-            gap: 50px; 
-            margin-bottom: 40px; 
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 50px;
             max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 40px;
         }
-        .footer-logo h3 { color: var(--rouge-deepmind); margin-bottom: 15px; font-size: 1.4rem; }
+
+        .footer-logo h3 { color: var(--primary-red); margin-bottom: 15px; font-size: 1.4rem; font-weight: bold; }
         .footer-logo p { color: #666; line-height: 1.6; font-size: 0.95rem; margin-bottom: 20px; }
-        .footer-col h4 { margin-bottom: 20px; font-size: 1.1rem; color: #333; }
+
+        .footer-col h4 { margin-bottom: 20px; font-size: 1.1rem; color: #333; font-weight: bold; }
         .footer-col ul { list-style: none; padding: 0; }
         .footer-col ul li { margin-bottom: 12px; }
         .footer-col ul li a { text-decoration: none; color: #777; transition: 0.3s; }
-        .footer-col ul li a:hover { color: var(--rouge-deepmind); }
+        .footer-col ul li a:hover { color: var(--primary-red); }
+
         .social-links { display: flex; gap: 12px; }
-        .social-links a { 
+        .social-links a {
             width: 38px; height: 38px; 
-            background: #f4f4f4; color: #333; 
-            display: flex; align-items: center; justify-content: center; 
-            border-radius: 50%; text-decoration: none; 
-            transition: 0.3s; font-size: 1.1rem; 
+            background: #f4f4f4; 
+            color: #333;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; text-decoration: none;
+            transition: 0.3s; font-size: 1.1rem;
         }
         .social-links a:hover { background: #333; color: white; }
-        .copyright { 
-            text-align: center; color: #aaa; font-size: 0.85rem; 
-            padding-top: 25px; border-top: 1px solid #f4f4f4; 
+
+        .copyright {
+            text-align: center; color: #aaa; font-size: 0.85rem;
+            padding-top: 25px; border-top: 1px solid #f4f4f4;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         /* Mobile */
         @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; padding: 15px; }
             .team-grid { grid-template-columns: 1fr; }
             .profile-card:nth-child(3) { grid-column: span 1; }
-            header { flex-direction: column; gap: 15px; text-align: center; }
-            header nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
             .footer-grid { grid-template-columns: 1fr; text-align: center; }
             .social-links { justify-content: center; }
         }
@@ -167,41 +156,36 @@
 <body>
 
     <header>
-        <div class="logo"><a href="index.html">Task Management</a></div>
+        <div class="logo">Task Management</div>
         <nav>
             <a href="dashboard.html">Dashboard</a>
             <a href="task_list.html">Tasks</a>
             <a href="support.html">Support</a>
-            <a href="GroupMembers.html">Team</a>
         </nav>
         <div class="user-zone">
-            <span style="margin-right:15px">User Name</span>
-            <button class="btn-logout" onclick="window.location.href='sign_in.html'">Log out</button>
+            <span style="margin-right:15px; font-weight: 500;">User Name</span>
+            <button class="btn-logout" onclick="window.location.href='index.html'">Log out</button>
         </div>
     </header>
-
-    <div class="header-logo">
-        <span class="google">Google</span><span class="deepmind">DeepMind</span>
-    </div>
 
     <div class="container">
         <div class="team-grid">
             <div class="profile-card">
-                <img src="https://ui-avatars.com/api/?name=Mohamed+Ali+Krichen&background=FFF5F2&color=E50914" class="avatar-img">
+                <img src="https://ui-avatars.com/api/?name=Mohamed+Ali+Krichen&background=FFF5F2&color=E50914" class="avatar-img" alt="Mohamed Ali Krichen">
                 <h2 class="name">Mohamed Ali Krichen</h2>
                 <span class="job-title">Back-End Developer</span>
                 <p class="description">Responsible for building and maintaining the server-side logic, databases, and APIs that power applications.</p>
             </div>
 
             <div class="profile-card">
-                <img src="https://ui-avatars.com/api/?name=Olfa+Fehri&background=FFF5F2&color=E50914" class="avatar-img">
+                <img src="https://ui-avatars.com/api/?name=Olfa+Fehri&background=FFF5F2&color=E50914" class="avatar-img" alt="Olfa Fehri">
                 <h2 class="name">Olfa Fehri</h2>
                 <span class="job-title">Software Engineer</span>
                 <p class="description">Designs, develops, tests, and optimizes scalable software systems using modern programming languages.</p>
             </div>
 
             <div class="profile-card">
-                <img src="https://ui-avatars.com/api/?name=Mohamed+Ali+Krichen&background=FFF5F2&color=E50914" class="avatar-img">
+                <img src="https://ui-avatars.com/api/?name=Mohamed+Ali+Krichen&background=FFF5F2&color=E50914" class="avatar-img" alt="Mohamed Ali Krichen">
                 <h2 class="name">Mohamed Ali Krichen</h2>
                 <span class="job-title">Group Manager</span>
                 <p class="description">Leads and coordinates the team, manages tasks, and drives successful achievement of group goals.</p>
@@ -224,14 +208,15 @@
                 <h4>Liens Rapides</h4>
                 <ul>
                     <li><a href="dashboard.html">Dashboard</a></li>
-                    <li><a href="task_list.html">Mes Tâches</a></li>
-                    <li><a href="GroupMembers.html">Team</a></li>
+                    <li><a href="task_list.html">Mes Tâches</a></li> 
+                    <li><a href="dashboard.html">Statistiques</a></li>
+                    <li><a href="#">Paramètres</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Support</h4>
                 <ul>
-                    <li><a href="support.html">Centre d'aide</a></li>
+                    <li><a href="support.html">Centre d'aide</a></li> 
                     <li><a href="support.html">Contactez-nous</a></li>
                 </ul>
             </div>
