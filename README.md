@@ -6,7 +6,7 @@ Welcome to the **Task Management** repository! This project utilizes a modular U
 
 You can explore the live application or view the guide below to understand the repository structure.
 
-* **🌐 [Access the Live Project**](https://www.google.com/search?q=https://benzinarahma0.github.io/Task_managment/index.html)
+* **🌐 [Access the Live Project**](https://benzinarahma0.github.io/Task_managment/index.html)
 * **📂 Repository Walkthrough:**
 
 ---
@@ -21,7 +21,7 @@ To experience the internal features of the application, use the following test c
 | --- | --- |
 | **Email** | `user@gmail.com` |
 | **Password** | `user` |
-| **Login Page** | **[Go to Sign In](https://www.google.com/search?q=https://benzinarahma0.github.io/Task_managment/sign_in.html)** |
+| **Login Page** | **[Go to Sign In](https://benzinarahma0.github.io/Task_managment/sign_in.html)** |
 
 ---
 
@@ -31,12 +31,12 @@ Use the links below to navigate directly to specific views of the application:
 
 | Page | State | Component Focus | Direct Link |
 | --- | --- | --- | --- |
-| **Landing Page** | 🔓 Logged-Out | Conversion & "Sign Up" | **[Open](https://www.google.com/search?q=https://benzinarahma0.github.io/Task_managment/index.html)** |
-| **Dashboard** | 🔒 Logged-In | Task Management & Navigation | **[Open](https://www.google.com/search?q=https://benzinarahma0.github.io/Task_managment/dashboard.html)** |
-| **Task List** | 🔒 Logged-In | Detailed Task Overview | **[Open](https://www.google.com/search?q=https://benzinarahma0.github.io/Task_managment/task_list.html)** |
-| **Support** | 🎧 Hybrid | Public Access & User Help | **[Open](https://www.google.com/search?q=https://benzinarahma0.github.io/Task_managment/support.html)** |
-| **Create Task** | 🔒 Logged-In | Task Entry Form | **[Open](https://www.google.com/search?q=https://benzinarahma0.github.io/Task_managment/CreateTask.html)** |
-| **Team Members** | 🔒 Logged-In | Collaborative Overview | **[Open](https://www.google.com/search?q=https://benzinarahma0.github.io/Task_managment/GroupMembers.html)** |
+| **Landing Page** | 🔓 Logged-Out | Conversion & "Sign Up" | **[Open](https://benzinarahma0.github.io/Task_managment/index.html)** |
+| **Dashboard** | 🔒 Logged-In | Task Management & Navigation | **[Open](https://benzinarahma0.github.io/Task_managment/dashboard.html)** |
+| **Task List** | 🔒 Logged-In | Detailed Task Overview | **[Open](https://benzinarahma0.github.io/Task_managment/task_list.html)** |
+| **Support** | 🎧 Hybrid | Public Access & User Help | **[Open](https://benzinarahma0.github.io/Task_managment/support.html)** |
+| **Create Task** | 🔒 Logged-In | Task Entry Form | **[Open](https://benzinarahma0.github.io/Task_managment/CreateTask.html)** |
+| **Team Members** | 🔒 Logged-In | Collaborative Overview | **[Open](https://benzinarahma0.github.io/Task_managment/GroupMembers.html)** |
 
 ---
 
@@ -62,7 +62,7 @@ Used for authenticated users actively managing tasks.
 
 > [!TIP]
 > **Support Page Hybridity**
-> The **[Support Page](https://www.google.com/search?q=https://benzinarahma0.github.io/Task_managment/support.html)** currently defaults to the Logged-Out state. Future backend integrations will allow this page to dynamically detect session status and swap components accordingly.
+> The **[Support Page](https://benzinarahma0.github.io/Task_managment/support.html)** currently defaults to the Logged-Out state. Future backend integrations will allow this page to dynamically detect session status and swap components accordingly.
 
 ---
 
