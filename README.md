@@ -1,13 +1,47 @@
-# 🧩 Header & Footer Architecture Guide
+# 🧩 Task Management: Header & Footer Architecture Guide
 
-Welcome contributors! To keep our UI consistent and our user flow logical, we use different headers and footers depending on the user's authentication state (Logged In vs. Logged Out). 
+Welcome contributors! To keep our UI consistent and our user flow logical, we use different headers and footers depending on the user's authentication state (Logged In vs. Logged Out).
 
-This guide explains which header/footer components belong to which pages. Please review this before creating new views or updating navigation links!
+---
+
+## 📸 Project Preview
+
+*This section will feature our AI-generated project concept image to give contributors a vision of the final goal.*
+
+---
+
+## 🚀 Getting Started & Tutorial
+
+To get a copy of this project running on your local machine, follow the visual guide below:
+
+### 🔑 Accessing the Dashboard
+
+To test the application and access the **Logged-In** state features, use the following test credentials on the `sign_in.html` page:
+
+| Field | Value |
+| --- | --- |
+| **Email** | `user@gmail.com` |
+| **Password** | `user` |
+
+---
+
+## 🌐 Live Demo: Interface Overview
+
+Explore the different views of the application below:
+
+| Page | State | Component Focus |
+| --- | --- | --- |
+| **[Landing Page](https://www.google.com/search?q=index.html)** | 🔓 Logged-Out | Conversion & "Sign Up" |
+| **[Dashboard](https://www.google.com/search?q=dashboard.html)** | 🔒 Logged-In | Task Management & Core Navigation |
+| **[Task List](https://www.google.com/search?q=task_list.html)** | 🔒 Logged-In | Detailed Task Overview |
+| **[Support](https://www.google.com/search?q=support.html)** | 🎧 Hybrid | Public Access & User Help |
 
 ---
 
 ## 📁 Component Location
+
 All master templates for our headers and footers are located in the `Header & Footer/` directory:
+
 * `Logged-Out-Header.html`
 * `Logged-Out-Footer.html`
 * `Logged-In-Header.html`
@@ -15,48 +49,44 @@ All master templates for our headers and footers are located in the `Header & Fo
 
 ---
 
-## 🔓 1. Logged-Out State (Public Pages)
-These components are for visitors who are not signed into the application. 
+## 🚦 Architecture States
+
+### 🔓 1. Logged-Out State (Public Pages)
+
+These components are for visitors who are not signed into the application.
+
 * **Header Focus:** Conversion (displays "Sign In" and "Sign Up" buttons).
 * **Footer Focus:** General information, hiding internal app-specific tools.
 
-**Components to use:**
-* **Header:** `Logged-Out-Header.html`
-* **Footer:** `Logged-Out-Footer.html`
+**Files applying this state:** `index.html`, `sign_in.html`, `sign_up.html`.
 
-**Files applying this state:**
-* `index.html` (Landing Page)
-* `sign_in.html`
-* `sign_up.html`
+### 🔒 2. Logged-In State (App Pages)
 
----
-
-## 🔒 2. Logged-In State (App Pages)
 These components are for authenticated users who are actively managing their tasks.
+
 * **Header Focus:** Core navigation (Dashboard, Tasks) and a "Log out" button.
 * **Footer Focus:** Quick links to internal app features like "Mes Tâches" and "Équipe".
 
-**Components to use:**
-* **Header:** `Logged-In-Header.html`
-* **Footer:** `Logged-In-Footer.html`
-
-**Files applying this state:**
-* `dashboard.html`
-* `task_list.html`
-* `CreateTask.html`
-* `GroupMembers.html`
+**Files applying this state:** `dashboard.html`, `task_list.html`, `CreateTask.html`, `GroupMembers.html`.
 
 ---
 
 ## 🎧 Special Case: `support.html`
-The Support page is a hybrid. It needs to be accessible to both public visitors (e.g., someone who forgot their password) and active users. 
 
-* **Static HTML Setup:** By default in this repository, `support.html` uses the **Logged-Out** header and footer so public visitors can navigate it seamlessly.
-* **Future Dynamic Setup:** When a backend is integrated, the server should conditionally swap these components to the Logged-In versions if an active user session is detected. 
+The Support page is a hybrid. It needs to be accessible to both public visitors and active users.
+
+* **Current Setup:** Uses the **Logged-Out** components by default for seamless public navigation.
+* **Future Plan:** Once a backend is integrated, the server will conditionally swap these components based on the active user session.
 
 ---
 
 ## 🛠️ Contribution Rules for Navigation
-If you need to update a navigation link, change the logo, or add a new social media icon:
-1. Make your changes in the respective template files inside the `Header & Footer/` folder first.
-2. Copy and paste those updated blocks into the corresponding `.html` files listed above to keep everything synced.
+
+If you need to update a navigation link, change the logo, or add a new icon:
+
+1. **Edit Templates:** Modify files inside the `Header & Footer/` folder first.
+2. **Sync Views:** Copy and paste the updated blocks into the corresponding `.html` files to maintain consistency across the project.
+
+---
+
+**Would you like me to generate the actual AI image for the "Project Preview" section now?**
