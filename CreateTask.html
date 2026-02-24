@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CreateTask.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Task Management</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <span class="brand">Task Management</span>
+            <a href="#">Dashboard</a>
+            <a href="#">Tasks</a>
+        </div>
+        <div class="nav-right">
+            <span class="username">User name</span>
+            <button class="logout-btn">Log out</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="task-card">
+            <h2>Create Task</h2>
+            <form>
+                <div class="input-group">
+                    <label>Title</label>
+                    <input type="text" placeholder="Enter task title">
+                </div>
+
+                <div class="input-group">
+                    <label>Description</label>
+                    <textarea rows="4"></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="input-group">
+                        <label>Status</label>
+                        <select>
+                            <option>TODO</option>
+                            <option>In Progress</option>
+                            <option>Done</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Priority</label>
+                        <select>
+                            <option disabled selected>Select Type</option>
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
+                        </select>
+                    </div>
+<div class="input-group">
+    <label>Do Date & Time</label>
+    <input type="datetime-local">
+</div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel">Cancel</button>
+                    <button type="submit" class="btn-create">Create</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+</body>
+</html>
+
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Navbar Styles */
+.navbar {
+    position: relative; /* or fixed/sticky */
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 20px 10px  rgba(0, 0, 0, 0.05);
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.brand { font-weight: 700; font-size: 1.2rem; }
+.navbar a { text-decoration: none; color: #666; font-weight: 500; }
+.logout-btn {
+    background: #ff3b30;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Main Container & Card */
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+    background: linear-gradient(to bottom, #ffffff, #f0f2f5);
+}
+
+.task-card {
+    background: #f4f4f4; /* Light grey background like the image */
+    padding: 40px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 700px;
+}
+
+.task-card h2 { margin-bottom: 25px; font-weight: 700; }
+
+/* Form Elements */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+input, select, textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+/* Buttons */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 120px; /* Large gap like your reference */
+    margin-top: 30px;
+}
+
+.btn-cancel {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 12px 60px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-create {
+    background: #ff3b30;
+    color: white;
+    border: none;
+    padding: 12px 60px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+</style>
