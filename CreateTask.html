@@ -36,7 +36,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             position: sticky; top: 0; z-index: 1000;
         }
-        .logo { font-weight: 800; font-size: 1.3rem; color: #1a1a1a; }
+        .logo { font-weight: 800; font-size: 1.3rem; color: #1a1a1a; text-decoration: none; }
         header nav a { margin: 0 15px; text-decoration: none; color: #555; font-weight: 500; transition: color 0.3s; }
         header nav a:hover { color: var(--primary-red); }
         
@@ -105,7 +105,7 @@
         .form-actions {
             display: flex;
             justify-content: center;
-            gap: 40px; /* Adjusted gap for better responsiveness */
+            gap: 40px; 
             margin-top: 30px;
         }
 
@@ -189,7 +189,7 @@
 <body>
 
     <header>
-        <div class="logo">Task Management</div>
+        <a href="dashboard.html" class="logo">Task Management</a>
         <nav>
             <a href="dashboard.html">Dashboard</a>
             <a href="task_list.html">Tasks</a>
@@ -197,7 +197,7 @@
         </nav>
         <div class="user-zone">
             <span style="margin-right:15px; font-weight: 500;">User Name</span>
-            <button class="btn-logout" onclick="window.location.href='sign_in.html'">Log out</button>
+            <button class="btn-logout" onclick="window.location.href='index.html'">Log out</button>
         </div>
     </header>
 
@@ -263,7 +263,7 @@
                 <ul>
                     <li><a href="dashboard.html">Dashboard</a></li>
                     <li><a href="task_list.html">Mes Tâches</a></li> 
-                    <li><a href="dashboard.html">Statistiques</a></li>
+                    <li><a href="GroupMembers.html">Équipe</a></li>
                     <li><a href="#">Paramètres</a></li>
                 </ul>
             </div>

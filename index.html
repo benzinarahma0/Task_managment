@@ -108,18 +108,40 @@
             text-align: center; color: #aaa; font-size: 0.85rem;
             padding-top: 25px; border-top: 1px solid #f4f4f4;
         }
+            :root { --primary-red: #e52d27; }
+    .public-header {
+        background: white; padding: 1rem 8%;
+        display: flex; align-items: center; justify-content: space-between;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        position: sticky; top: 0; z-index: 1000;
+        font-family: 'Inter', sans-serif;
+    }
+    .public-header .logo { font-weight: 800; font-size: 1.3rem; color: #1a1a1a; text-decoration: none; }
+    .public-header nav a { margin: 0 15px; text-decoration: none; color: #555; font-weight: 500; transition: color 0.3s; }
+    .public-header nav a:hover { color: var(--primary-red); }
+    .public-header .user-zone { display: flex; gap: 10px; }
+    .public-header .btn-signin { 
+        background: white; color: var(--primary-red); border: 1px solid var(--primary-red);
+        padding: 8px 15px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.2s; 
+    }
+    .public-header .btn-signin:hover { background: #fff5f5; }
+    .public-header .btn-signup { 
+        background: var(--primary-red); color: white; border: 1px solid var(--primary-red);
+        padding: 8px 15px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.2s; 
+    }
+    .public-header .btn-signup:hover { background: #c22626; border-color: #c22626; }
     </style>
 </head>
 <body class="text-brand-dark font-sans antialiased overflow-x-hidden pt-20"> 
-    <header>
-        <div class="logo">Task Management</div>
+    <header class="public-header">
+        <a href="index.html" class="logo">Task Management</a>
         <nav>
-            <a href="index.html" class="active">Home</a>
+            <a href="index.html">Home</a>
             <a href="support.html">Support</a>
         </nav>
-        <div class="user-zone" style="display: flex; gap: 10px;">
-            <button class="btn-logout" style="background: white; color: var(--primary-red); border: 1px solid var(--primary-red);" onclick="window.location.href='sign_in.html'">Sign In</button>
-            <button class="btn-logout" onclick="window.location.href='sign_up.html'">Sign Up</button>
+        <div class="user-zone">
+            <button class="btn-signin" onclick="window.location.href='sign_in.html'">Sign In</button>
+            <button class="btn-signup" onclick="window.location.href='sign_up.html'">Sign Up</button>
         </div>
     </header>
 
@@ -315,7 +337,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="public-footer">
         <div class="footer-grid">
             <div class="footer-logo">
                 <h3>Task Management</h3>
@@ -329,10 +351,9 @@
             <div class="footer-col">
                 <h4>Liens Rapides</h4>
                 <ul>
-                    <li><a href="dashboard.html">Dashboard</a></li>
-                    <li><a href="task_list.html">Mes Tâches</a></li> 
-                    <li><a href="dashboard.html">Statistiques</a></li>
-                    <li><a href="#">Paramètres</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sign_in.html">Connexion</a></li> 
+                    <li><a href="sign_up.html">Inscription</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -343,9 +364,7 @@
                 </ul>
             </div>
         </div>
-        <div class="copyright">
-            &copy; 2026 Task Management. Tous droits réservés.
-        </div>
+        <div class="copyright">&copy; 2026 Task Management. Tous droits réservés.</div>
     </footer>
 
     <script>

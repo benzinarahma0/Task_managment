@@ -33,14 +33,14 @@
             min-height: 100vh;
         }
 
-        /* --- TEMPLATE HEADER --- */
+        /* --- TEMPLATE HEADER (LOGGED-IN) --- */
         header {
             background: white; padding: 1rem 8%;
             display: flex; align-items: center; justify-content: space-between;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             position: sticky; top: 0; z-index: 1000;
         }
-        .logo { font-weight: 800; font-size: 1.3rem; color: #1a1a1a; }
+        .logo { font-weight: 800; font-size: 1.3rem; color: #1a1a1a; text-decoration: none; }
         header nav a { margin: 0 15px; text-decoration: none; color: #555; font-weight: 500; transition: color 0.3s; }
         header nav a:hover { color: var(--primary-red); }
         
@@ -100,7 +100,7 @@
         .job-title { color: var(--primary-red); font-size: 14px; font-weight: 600; margin-bottom: 20px; display: block; }
         .description { color: var(--gris-description); font-size: 14px; line-height: 1.6; margin: 0; }
 
-        /* --- TEMPLATE FOOTER --- */
+        /* --- TEMPLATE FOOTER (LOGGED-IN) --- */
         footer {
             background: white;
             padding: 60px 8% 30px;
@@ -156,7 +156,7 @@
 <body>
 
     <header>
-        <div class="logo">Task Management</div>
+        <a href="dashboard.html" class="logo">Task Management</a>
         <nav>
             <a href="dashboard.html">Dashboard</a>
             <a href="task_list.html">Tasks</a>
@@ -209,7 +209,7 @@
                 <ul>
                     <li><a href="dashboard.html">Dashboard</a></li>
                     <li><a href="task_list.html">Mes Tâches</a></li> 
-                    <li><a href="dashboard.html">Statistiques</a></li>
+                    <li><a href="GroupMembers.html">Équipe</a></li>
                     <li><a href="#">Paramètres</a></li>
                 </ul>
             </div>
