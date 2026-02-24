@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management | Kill the chaos. Ship faster.</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#e02424', /* Exact red from your UI buttons */
+                            dark: '#1a1a1a',
+                            gray: '#6b7280',
+                            bg: '#f3f0f1' /* Off-white background from your UI */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'], 
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        body { background-color: #f3f0f1; }
+
+        /* Scroll Animation Base Classes (Triggered by JS later) */
+        .scroll-hidden {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .scroll-show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Delays for cascading effects */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+
+        /* Glassmorphism utility */
+        .glass-nav {
+            background: rgba(243, 240, 241, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Hero Image Glowing Effect */
+        .glow-effect {
+            box-shadow: 0 0 60px -15px rgba(224, 36, 36, 0.4);
+        }
+    </style>
+</head>
+<body class="text-brand-dark font-sans antialiased overflow-x-hidden">
+
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 font-extrabold text-xl tracking-tight text-black">
+                    Task Management
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="flex items-baseline space-x-12">
+                        <a href="#roadmap" class="hover:text-brand-red transition-colors px-3 py-2 text-sm font-medium text-brand-gray">Roadmap</a>
+                        <a href="#about" class="hover:text-brand-red transition-colors px-3 py-2 text-sm font-medium text-brand-gray">About</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <a href="#signup" class="bg-brand-red hover:bg-red-700 text-white px-6 py-2.5 rounded text-sm font-medium transition-all shadow-lg shadow-red-500/30">
+                        Log out
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 min-h-screen flex items-center">
+        <div class="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-red-400 rounded-full blur-[120px] opacity-20 pointer-events-none -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                
+                <div class="text-center lg:text-left scroll-hidden">
+                    <h1 class="text-5xl lg:text-7xl font-bold tracking-tight mb-6 text-black">
+                        Kill the chaos. <br/>Ship <span class="text-brand-red">faster.</span>
+                    </h1>
+                    <p class="text-lg lg:text-xl text-brand-gray mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        The only to-do platform built for modern teams who refuse to be slowed down by clunky, outdated software.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#signup" class="bg-brand-red hover:bg-red-700 text-white px-8 py-4 rounded font-semibold transition-all shadow-lg shadow-red-500/40 hover:-translate-y-1">
+                            Create Task
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="relative scroll-hidden delay-200 mt-10 lg:mt-0">
+                    <div class="relative rounded-xl bg-white p-2 glow-effect border border-white transform hover:scale-[1.02] transition-transform duration-500">
+                        <div class="w-full h-80 lg:h-[450px] bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200 overflow-hidden relative">
+                             <span class="text-gray-400 text-sm font-medium z-10"><img src="1.jpg" alt="" srcset=""></span>
+                             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/5 to-red-500/20"></div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <section id="value-add" class="py-24 lg:py-40 relative bg-white overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-red-200 to-transparent"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            
+            <div class="max-w-4xl mx-auto text-center mb-24 scroll-hidden">
+                <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-brand-dark mb-6">
+                    Stop fighting your tools. <br/>Start <span class="text-brand-red">building</span> your product.
+                </h2>
+                <p class="text-lg md:text-xl text-brand-gray">
+                    Legacy enterprise software is bloated, slow, and requires a manual to understand. We built a platform that gets out of your way so your team can focus on what actually matters.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                
+                <div class="space-y-12">
+                    <div class="scroll-hidden group">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-brand-red font-bold text-xl transition-transform group-hover:scale-110">1</div>
+                            <h3 class="text-2xl font-bold text-brand-dark">Lightning Fast Workflows</h3>
+                        </div>
+                        <p class="text-brand-gray ml-16 leading-relaxed">Create tasks, assign priorities, and move tickets in milliseconds. No page reloads, no loading spinners. Just pure speed.</p>
+                    </div>
+
+                    <div class="scroll-hidden delay-100 group">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-brand-red font-bold text-xl transition-transform group-hover:scale-110">2</div>
+                            <h3 class="text-2xl font-bold text-brand-dark">Crystal Clear Dashboard</h3>
+                        </div>
+                        <p class="text-brand-gray ml-16 leading-relaxed">See exactly what needs your attention immediately. Our minimalist design removes cognitive overload and visual clutter.</p>
+                    </div>
+                </div>
+
+                <div class="relative scroll-hidden delay-200 mt-10 lg:mt-0 group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-red-500 to-red-200 rounded-2xl blur-[30px] opacity-10 group-hover:opacity-30 transition duration-700"></div>
+                    
+                    <div class="relative bg-brand-bg ring-1 ring-gray-900/5 rounded-2xl p-4 shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-500">
+                        
+                        <div class="w-full h-64 md:h-96 bg-white rounded-xl border border-gray-200 flex flex-col items-center justify-center relative overflow-hidden">
+                            <span class="text-gray-400 text-sm font-medium z-10"><img src="2.jpg" alt=""></span>
+                            
+                            <div class="absolute top-6 left-6 right-6 h-10 bg-gray-50 rounded-md border border-gray-100"></div>
+                            <div class="absolute top-24 left-6 w-1/3 h-40 bg-gray-50 rounded-md border border-gray-100"></div>
+                            <div class="absolute top-24 right-6 w-1/2 h-40 bg-gray-50 rounded-md border border-gray-100 flex flex-col gap-2 p-4">
+                                <div class="w-full h-4 bg-gray-200 rounded-sm"></div>
+                                <div class="w-3/4 h-4 bg-gray-200 rounded-sm"></div>
+                                <div class="w-1/2 h-4 bg-red-100 rounded-sm mt-auto"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <section id="advantage" class="py-24 lg:py-32 bg-brand-bg relative z-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-20 scroll-hidden">
+                <h2 class="text-brand-red font-semibold tracking-wide uppercase text-sm mb-3">Why We Win</h2>
+                <h3 class="text-3xl md:text-5xl font-extrabold text-brand-dark mb-6">
+                    Designed for doers, not managers.
+                </h3>
+                <p class="text-lg text-brand-gray">
+                    Most project management tools are built to generate charts for executives. We built our platform for the people actually doing the work.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-red-500/10 transform hover:-translate-y-2 transition-all duration-300 scroll-hidden group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-brand-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                    
+                    <div class="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-red transition-colors duration-300">
+                        <svg class="w-7 h-7 text-brand-red group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-dark mb-3">Zero Learning Curve</h4>
+                    <p class="text-brand-gray leading-relaxed">
+                        No complex onboarding required. Our intuitive interface mirrors how your brain already organizes tasks. Sign up and start shipping in 60 seconds.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-red-500/10 transform hover:-translate-y-2 transition-all duration-300 scroll-hidden delay-100 group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-brand-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                    
+                    <div class="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-red transition-colors duration-300">
+                        <svg class="w-7 h-7 text-brand-red group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-dark mb-3">Keyboard-First Architecture</h4>
+                    <p class="text-brand-gray leading-relaxed">
+                        Keep your hands on the keyboard. Powerful shortcuts and command palettes let power users navigate, create, and assign tasks at the speed of thought.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-red-500/10 transform hover:-translate-y-2 transition-all duration-300 scroll-hidden delay-200 group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-brand-red transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                    
+                    <div class="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-red transition-colors duration-300">
+                        <svg class="w-7 h-7 text-brand-red group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-dark mb-3">Ruthless Noise Reduction</h4>
+                    <p class="text-brand-gray leading-relaxed">
+                        Say goodbye to endless notification streams and cluttered sidebars. We only show you what matters right now, hiding the rest until you need it.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section id="trust" class="py-24 lg:py-32 bg-white relative overflow-hidden border-t border-gray-100">
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1/2 bg-gradient-to-t from-red-50 to-transparent rounded-t-full blur-3xl opacity-60"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 scroll-hidden">
+                <h2 class="text-brand-red font-semibold tracking-wide uppercase text-sm mb-3">Traction & Scale</h2>
+                <h3 class="text-3xl md:text-5xl font-extrabold text-brand-dark mb-6">
+                    Engineered for hyper-growth.
+                </h3>
+                <p class="text-lg text-brand-gray">
+                    Whether you are a scrappy startup or a Fortune 500 enterprise, our infrastructure is built to scale securely with your ambition.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
+                <div class="text-center scroll-hidden">
+                    <div class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-2">99.9<span class="text-brand-red">%</span></div>
+                    <div class="text-sm font-medium text-brand-gray uppercase tracking-wider">Uptime SLA</div>
+                </div>
+                <div class="text-center scroll-hidden delay-100">
+                    <div class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-2">10<span class="text-brand-red">x</span></div>
+                    <div class="text-sm font-medium text-brand-gray uppercase tracking-wider">Faster Shipping</div>
+                </div>
+                <div class="text-center scroll-hidden delay-200">
+                    <div class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-2">2<span class="text-brand-red">M+</span></div>
+                    <div class="text-sm font-medium text-brand-gray uppercase tracking-wider">Tasks Completed</div>
+                </div>
+                <div class="text-center scroll-hidden delay-300">
+                    <div class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-2">SOC<span class="text-brand-red">2</span></div>
+                    <div class="text-sm font-medium text-brand-gray uppercase tracking-wider">Certified Secure</div>
+                </div>
+            </div>
+
+            <div class="relative max-w-5xl mx-auto scroll-hidden mb-24">
+                <div class="absolute -inset-1 bg-gradient-to-r from-red-500 to-red-300 rounded-2xl blur-[40px] opacity-20"></div>
+                <div class="relative bg-white/60 backdrop-blur-xl border border-white/80 rounded-2xl p-6 md:p-10 shadow-xl overflow-hidden">
+                    <div class="flex items-center justify-between mb-8">
+                        <h4 class="text-lg font-bold text-brand-dark">Platform Adoption</h4>
+                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold tracking-wide">+314% YoY</span>
+                    </div>
+                    
+                    <div class="w-full h-48 md:h-72 border-b border-l border-gray-200 relative flex items-end justify-between px-2 pb-2">
+                        <div class="w-1/12 bg-red-100 rounded-t-sm h-1/6 hover:bg-brand-red transition-colors duration-300"></div>
+                        <div class="w-1/12 bg-red-100 rounded-t-sm h-2/6 hover:bg-brand-red transition-colors duration-300"></div>
+                        <div class="w-1/12 bg-red-200 rounded-t-sm h-2/6 hover:bg-brand-red transition-colors duration-300"></div>
+                        <div class="w-1/12 bg-red-200 rounded-t-sm h-3/6 hover:bg-brand-red transition-colors duration-300"></div>
+                        <div class="w-1/12 bg-red-300 rounded-t-sm h-1/2 hover:bg-brand-red transition-colors duration-300"></div>
+                        <div class="w-1/12 bg-red-400 rounded-t-sm h-3/4 hover:bg-brand-red transition-colors duration-300"></div>
+                        <div class="w-1/12 bg-brand-red rounded-t-sm h-full shadow-[0_0_15px_rgba(224,36,36,0.5)] relative group cursor-pointer">
+                            <div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-brand-dark text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">Q4</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center scroll-hidden">
+                <p class="text-sm font-semibold text-brand-gray uppercase tracking-widest mb-8">Trusted by innovative teams worldwide</p>
+                <div class="flex flex-wrap justify-center gap-10 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                    <span class="text-2xl font-black text-gray-400">ACME Corp</span>
+                    <span class="text-2xl font-black text-gray-400">Globex</span>
+                    <span class="text-2xl font-black text-gray-400">Soylent</span>
+                    <span class="text-2xl font-black text-gray-400">Initech</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <footer class="bg-brand-bg pt-20 pb-10 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                
+                <div>
+                    <h4 class="text-brand-dark font-bold mb-6 text-sm uppercase tracking-wider">Contact</h4>
+                    <div class="flex flex-col space-y-4">
+                        <a href="#" class="text-brand-red hover:text-red-700 transition-colors w-6 h-6">
+                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="#" class="text-brand-red hover:text-red-700 transition-colors w-6 h-6">
+                            <svg fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"/></svg>
+                        </a>
+                        <a href="#" class="text-brand-red hover:text-red-700 transition-colors w-6 h-6">
+                            <svg fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 01-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 01-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 011.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418zM15.194 12L10 15V9l5.194 3z" clip-rule="evenodd"/></svg>
+                        </a>
+                        <a href="#" class="text-brand-red hover:text-red-700 transition-colors w-6 h-6">
+                            <svg fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-brand-gray/30 pointer-events-none"></div>
+                    <div class="absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-brand-gray/30 pointer-events-none"></div>
+                    
+                    <h4 class="text-brand-dark font-bold mb-6 text-sm uppercase tracking-wider">Useful Links</h4>
+                    <ul class="space-y-4 text-sm font-medium text-brand-dark">
+                        <li><a href="#" class="hover:text-brand-red transition-colors">Services</a></li>
+                        <li><a href="#" class="hover:text-brand-red transition-colors">About us</a></li>
+                        <li><a href="#" class="hover:text-brand-red transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-12 pt-8 border-t border-gray-200">
+                <p class="text-sm font-medium text-brand-dark">
+                    © 2026 : All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Scroll-triggered Reveal Animations (The "Scroll Story")
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // Triggers when 15% of the element is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('scroll-show');
+                        // Optional: Unobserve after revealing if you only want it to happen once
+                        // observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            const hiddenElements = document.querySelectorAll('.scroll-hidden');
+            hiddenElements.forEach((el) => observer.observe(el));
+
+            // 2. Dynamic Glass Navbar Effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    // Scrolling down: make it more solid/blur
+                    navbar.classList.add('shadow-sm', 'bg-white/90');
+                    navbar.classList.remove('bg-white/50');
+                } else {
+                    // Top of page: make it cleaner
+                    navbar.classList.remove('shadow-sm', 'bg-white/90');
+                    navbar.classList.add('bg-white/50');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
