@@ -1,25 +1,178 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CreateTask.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <title>Task Management</title>
+    <title>Task Management - Create Task</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background: white; 
+            padding: 1rem 8%;
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .logo { font-weight: 800; font-size: 1.3rem; }
+        .logo a { text-decoration: none; color: inherit; }
+        nav a { margin: 0 15px; text-decoration: none; color: #555; font-weight: 500; }
+        .btn-logout { 
+            background: #e52d27; 
+            color: white; 
+            border: none; 
+            padding: 8px 15px; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            cursor: pointer; 
+        }
+
+        /* Main Container & Card */
+        .container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 60px 20px;
+            background: linear-gradient(to bottom, #ffffff, #f0f2f5);
+        }
+
+        .task-card {
+            background: #f4f4f4;
+            padding: 40px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 700px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .task-card h2 { margin-bottom: 25px; font-weight: 700; }
+
+        /* Form Elements */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input, select, textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* Buttons */
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            gap: 120px;
+            margin-top: 30px;
+        }
+
+        .btn-cancel {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 12px 60px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-cancel:hover { background: #555; }
+
+        .btn-create {
+            background: #e52d27;
+            color: white;
+            border: none;
+            padding: 12px 60px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-create:hover { background: #c22626; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: white; 
+            padding: 60px 8% 30px; 
+            border-top: 1px solid #eee; 
+            margin-top: auto;
+        }
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: 1.5fr 1fr 1fr; 
+            gap: 50px; 
+            margin-bottom: 40px; 
+        }
+        .footer-logo h3 { color: #e52d27; margin-bottom: 15px; font-size: 1.4rem; }
+        .footer-logo p { color: #666; line-height: 1.6; font-size: 0.95rem; margin-bottom: 20px; }
+        .footer-col h4 { margin-bottom: 20px; font-size: 1.1rem; color: #333; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { text-decoration: none; color: #777; transition: 0.3s; }
+        .footer-col ul li a:hover { color: #e52d27; }
+        .social-links { display: flex; gap: 12px; }
+        .social-links a { 
+            width: 38px; height: 38px; 
+            background: #f4f4f4; color: #333; 
+            display: flex; align-items: center; justify-content: center; 
+            border-radius: 50%; text-decoration: none; 
+            transition: 0.3s; font-size: 1.1rem; 
+        }
+        .social-links a:hover { background: #333; color: white; }
+        .copyright { 
+            text-align: center; color: #aaa; font-size: 0.85rem; 
+            padding-top: 25px; border-top: 1px solid #f4f4f4; 
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-left">
-            <span class="brand">Task Management</span>
-            <a href="#">Dashboard</a>
-            <a href="#">Tasks</a>
+
+    <header>
+        <div class="logo"><a href="index.html">Task Management</a></div>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="task_list.html">Tasks</a>
+            <a href="support.html">Support</a>
+            <a href="GroupMembers.html">Team</a>
+        </nav>
+        <div class="user-zone">
+            <span style="margin-right:15px">User Name</span>
+            <button class="btn-logout" onclick="window.location.href='sign_in.html'">Log out</button>
         </div>
-        <div class="nav-right">
-            <span class="username">User name</span>
-            <button class="logout-btn">Log out</button>
-        </div>
-    </nav>
+    </header>
 
     <main class="container">
         <section class="task-card">
@@ -53,134 +206,51 @@
                             <option>High</option>
                         </select>
                     </div>
-<div class="input-group">
-    <label>Do Date & Time</label>
-    <input type="datetime-local">
-</div>
+                    <div class="input-group">
+                        <label>Do Date & Time</label>
+                        <input type="datetime-local">
+                    </div>
                 </div>
 
                 <div class="form-actions">
-                    <button type="button" class="btn-cancel">Cancel</button>
-                    <button type="submit" class="btn-create">Create</button>
+                    <button type="button" class="btn-cancel" onclick="window.location.href='task_list.html'">Cancel</button>
+                    <button type="submit" class="btn-create" onclick="event.preventDefault(); window.location.href='task_list.html'">Create</button>
                 </div>
             </form>
         </section>
     </main>
 
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <h3>Task Management</h3>
+                <p>Simplifiez votre productivité quotidienne avec notre outil de gestion intuitive. Organisez, suivez et réussissez vos projets.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Liens Rapides</h4>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="task_list.html">Mes Tâches</a></li>
+                    <li><a href="GroupMembers.html">Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="support.html">Centre d'aide</a></li>
+                    <li><a href="support.html">Contactez-nous</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Task Management. Tous droits réservés.
+        </div>
+    </footer>
+
 </body>
 </html>
-
-<style>
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
-
-body {
-    background-color: #f8f9fa;
-    color: #333;
-}
-
-/* Navbar Styles */
-.navbar {
-    position: relative; /* or fixed/sticky */
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background: rgb(255, 255, 255);
-    box-shadow: 0 20px 10px  rgba(0, 0, 0, 0.05);
-}
-
-.nav-left, .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
-.brand { font-weight: 700; font-size: 1.2rem; }
-.navbar a { text-decoration: none; color: #666; font-weight: 500; }
-.logout-btn {
-    background: #ff3b30;
-    color: white;
-    border: none;
-    padding: 8px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-/* Main Container & Card */
-.container {
-    display: flex;
-    justify-content: center;
-    padding: 60px 20px;
-    background: linear-gradient(to bottom, #ffffff, #f0f2f5);
-}
-
-.task-card {
-    background: #f4f4f4; /* Light grey background like the image */
-    padding: 40px;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 700px;
-}
-
-.task-card h2 { margin-bottom: 25px; font-weight: 700; }
-
-/* Form Elements */
-.input-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-}
-
-.input-group label {
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #555;
-}
-
-input, select, textarea {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    outline: none;
-}
-
-.row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 15px;
-}
-
-/* Buttons */
-.form-actions {
-    display: flex;
-    justify-content: center;
-    gap: 120px; /* Large gap like your reference */
-    margin-top: 30px;
-}
-
-.btn-cancel {
-    background: #333;
-    color: white;
-    border: none;
-    padding: 12px 60px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.btn-create {
-    background: #ff3b30;
-    color: white;
-    border: none;
-    padding: 12px 60px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-</style>
